@@ -1,0 +1,23 @@
+{
+    "name": "Second Brain AI Assistant",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "charliermarsh.ruff",
+                "tamasfe.even-better-toml"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/workspace/apps/second-brain-offline/.venv-offline/bin/python",
+                "python.analysis.extraPaths": [
+                    "/workspace/apps/second-brain-offline/src",
+                    "/workspace/apps/second-brain-online/src"
+                ]
+            }
+        }
+    },
+    "postCreateCommand": "cd apps/second-brain-offline && uv venv .venv-offline && uv sync && cd ../second-brain-online && uv venv .venv-online && uv sync"
+}
